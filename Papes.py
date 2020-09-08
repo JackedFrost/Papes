@@ -11,26 +11,27 @@ def color_sorter(entry):
     hsl = color.hsl
     #section below will pull the value from rgb and sort in to the correct foler [0] being red
 
-    if rgb[0] >rgb[1]+rgb[2]:
-        shutil.move(picture , 'C:\Pictures\sorted\Red')
-    elif rgb[2]>rgb[0]+rgb[1]:
-        shutil.move(picture , 'C:\Pictures\sorted\Blue')
-    elif rgb[1]>rgb[0]+rgb[2]:
-        shutil.move( picture , 'C:\Pictures\sorted\Green')
-    elif rgb[0] +rgb[2]>rgb[1] and rgb[2]<rgb[1]:
-        shutil.move(picture , 'C:\Pictures\sorted\Pink')
-    elif rgb[0] +rgb[1]>rgb[2] and rgb[0] + rgb[1] > 360 and rgb[2]<100:
-        shutil.move(picture , 'C:\Pictures\sorted\Yellow')
-    elif rgb[0] +rgb[2]>rgb[1] and rgb[2]<rgb[0]:
-        shutil.move(picture , 'C:\Pictures\sorted\Purple')
-    elif rgb[0] in range(25,100) and rgb[1] in range(25,100) and rgb[2] in range(25,100):
-        shutil.move(picture , 'C:\Pictures\sorted\Gray')
-    elif rgb[0] +rgb[1]>rgb[2] and rgb[1]>rgb[0]:
-        shutil.move(picture , 'C:\Pictures\sorted\Gray')
-    elif rgb[0] in range(0,25) and rgb[1] in range(0,25) and rgb[2] in range(0,25):
+
+    if hsl[2]in range(0,10):
         shutil.move(picture , 'C:\Pictures\sorted\Black')
-    elif rgb[0] in range(230,255) and rgb[1] in range(230,255) and rgb[2] in range(230,255):
+    elif hsl[2]in range(90,100):
         shutil.move(picture , 'C:\Pictures\sorted\White')
+    elif hsl[1]in range(10,30):
+        shutil.move(picture , 'C:\Pictures\sorted\Gray')
+    elif hsl[0] in range(0,10) or hsl[0] in range(340,360):
+        shutil.move(picture , 'C:\Pictures\sorted\Red')
+    elif hsl[0] in range(11,44):
+        shutil.move(picture , 'C:\Pictures\sorted\Orange')
+    elif hsl[0] in range(140,260):
+        shutil.move(picture , 'C:\Pictures\sorted\Blue')
+    elif hsl[0]in range(70,139):
+        shutil.move( picture , 'C:\Pictures\sorted\Green')
+    elif hsl[0]in range(295,339):
+        shutil.move(picture , 'C:\Pictures\sorted\Pink')
+    elif hsl[0] in range(45,69):
+        shutil.move(picture , 'C:\Pictures\sorted\Yellow')
+    elif hsl[0] in range (260,295):
+        shutil.move(picture , 'C:\Pictures\sorted\Purple')
     else:
         shutil.move(picture , 'C:\Pictures\sorted\ManualSort')
 
@@ -38,6 +39,7 @@ try:
     os.mkdir('C:\Pictures')
     os.mkdir('C:\Pictures\sorted')
     os.mkdir('C:\Pictures\sorted\Red')
+    os.mkdir('C:\Pictures\sorted\Orange')
     os.mkdir('C:\Pictures\sorted\Blue')
     os.mkdir('C:\Pictures\sorted\Green')
     os.mkdir('C:\Pictures\sorted\Pink')
